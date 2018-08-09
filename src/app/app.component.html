@@ -1,0 +1,45 @@
+<div class="main-container">
+    <!--
+      I: alert-info
+      W: alert-warning
+      D: alert-danger
+      S: alert-success
+    -->
+    <!--alert [tag]="'W'"></alert-->
+    <navbar (onToggleRefresh)="toggleRefresh($event)"></navbar>
+    <nav class="subnav">
+        <ul class="nav">
+          <ticker></ticker>
+        </ul>
+    </nav>
+    <div class="content-container">
+      <div class="content-area">
+          <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+              <div class="card">
+                    <div class="card-block">
+                        <div class="card-title">
+                            Your Portfolio
+                        </div>
+                        <div class="card-text">
+                            <investements></investements>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+              <div class="card">
+                    <div class="card-block">
+                        <div class="card-title">
+                            All stocks
+                        </div>
+                        <div class="card-text">
+                          <stocks [stocks]="stocks"></stocks>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+     </div>
+</div>
