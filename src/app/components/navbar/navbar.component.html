@@ -17,10 +17,10 @@
         <a href="" class="active nav-link"><span class="nav-text">Return: {{accountService.value - accountService.cost | currency: USD :'symbol':'.2'}}</span></a-->
     </div>
     <div class="header-actions">
-        <a class="nav-link nav-icon" (click)="reset()">
+        <a class="nav-link nav-icon" (click)="toggleRefresh()">
             <clr-icon shape="refresh"></clr-icon>
         </a>
-        <a class="nav-link nav-icon" (click)="toggleRefresh()">
+        <a class="nav-link nav-icon" (click)="reset()">
             <clr-icon shape="times-circle"></clr-icon>
         </a>
     </div>

@@ -11,7 +11,10 @@ export class AppComponent implements OnInit, OnDestroy{
   title = 'Fantasy Portfolio';
   //refresh : boolean = true;
   stocks : Stock[] = [];
-
+  private messageAlert : string ='';
+  private showAlert: boolean = false;
+  private tagAlert: string = 'I';
+  private autohideAlert : number;
   constructor(){
 
   }
@@ -19,13 +22,22 @@ export class AppComponent implements OnInit, OnDestroy{
 
   }
   ngOnDestroy(){
-    
+
   }
   toggleRefresh(stocks){
     this.stocks = stocks;
     console.log("toggle = ",this.stocks.length);
+
     //this.refresh = toggle;
     //this.refresh = !this.refresh;
+  }
+
+  showAlertMessage(message){
+    console.log(message);
+    this.showAlert= message.show;
+    this.tagAlert=message.tag;
+    this.messageAlert=message.text;
+    this.autohideAlert = message.autohide;
   }
 
 }

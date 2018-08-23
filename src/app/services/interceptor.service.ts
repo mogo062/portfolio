@@ -24,13 +24,19 @@ export class StocksInterceptor implements HttpInterceptor {
       //  console.log("stocks : ", stocks);
       //ths next flowwing line is a dead code :
         let symbols = this.accountService.stocks.map(stock => stock.symbol);
+        let i = 0;
         stocks.forEach(stock => {
+          //console.log("i = "i+' = ', stock);
+          let j = 0;
           this.accountService.stocks.map(item => {
             if(stock.symbol === item.symbol ){
+              console.log(i+" = "+j+" = ", item);
               item.price = stock.price;
               item.change = ((stock.price * 100) - (item.cost * 100 )) / 100;
             }
+            j++;
           });
+          i++;
         });
         this.accountService.calculateValue();
         return stocks;

@@ -5,8 +5,8 @@
       D: alert-danger
       S: alert-success
     -->
-    <!--alert [tag]="'W'"></alert-->
-    <navbar (onToggleRefresh)="toggleRefresh($event)"></navbar>
+    <alert [tag]="tagAlert" [autohide]="autohideAlert" [message]="messageAlert" [show]="showAlert" (onShowAlertMessage)="showAlertMessage($event)"></alert>
+    <navbar (onToggleRefresh)="toggleRefresh($event)" (onShowAlertMessage)="showAlertMessage($event)"></navbar>
     <nav class="subnav">
         <ul class="nav">
           <ticker></ticker>

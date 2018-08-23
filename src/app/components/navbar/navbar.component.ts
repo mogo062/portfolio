@@ -15,6 +15,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   refresh : boolean = true;
   interval: any;
 
+  @Output()
+  onShowAlertMessage: EventEmitter<Object> = new EventEmitter<Object>();
+  message : any = {};
+
   constructor(private accountService: AccountService, private stockService: StocksService) { }
 
   ngOnInit() {
@@ -24,7 +28,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       if(this.refresh){
          this.load();
        }
-    },15000);
+    },20000);
   }
 
   ngOnDestroy(){
@@ -32,12 +36,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   reset(){
     this.accountService.reset();
+    this.message = {
+        text : "You have reset your portfolio!"+new Date(),
+        tag : 'W',
+        show : true,
+        autohide: 10000
+      };
+    this.onShowAlertMessage.emit(this.message);
   }
 
   toggleRefresh(){
     console.log(this.refresh);
     //this.onToggleRefresh.emit(!this.refresh);
     this.refresh = !this.refresh;
+    this.message = {
+        text : "You have refresh your portfolio!"+new Date(),
+        tag : 'I',
+        show : true,
+        autohide: 5000
+      };
+    this.onShowAlertMessage.emit(this.message);
   }
 
 
