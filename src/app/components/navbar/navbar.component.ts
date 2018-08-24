@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { AccountService } from '../../services/account.service';
 import { Stock } from '../../services/stocks.model';
 import { StocksService } from '../../services/stocks.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'navbar',
@@ -15,11 +16,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   refresh : boolean = true;
   interval: any;
 
-  @Output()
-  onShowAlertMessage: EventEmitter<Object> = new EventEmitter<Object>();
-  message : any = {};
 
-  constructor(private accountService: AccountService, private stockService: StocksService) { }
+  constructor(private accountService: AccountService, private stockService: StocksService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.accountService.init();
@@ -36,26 +34,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   reset(){
     this.accountService.reset();
-    this.message = {
-        text : "You have reset your portfolio!"+new Date(),
-        tag : 'W',
-        show : true,
-        autohide: 10000
-      };
-    this.onShowAlertMessage.emit(this.message);
+    this.alertService.alert(true, 10000, 'W', "You have reset your portfolio!"+new Date());
   }
 
   toggleRefresh(){
     console.log(this.refresh);
     //this.onToggleRefresh.emit(!this.refresh);
     this.refresh = !this.refresh;
-    this.message = {
-        text : "You have refresh your portfolio!"+new Date(),
-        tag : 'I',
-        show : true,
-        autohide: 5000
-      };
-    this.onShowAlertMessage.emit(this.message);
+    this.alertService.alert(true, 15000, 'I', "You have refresh your portfolio!"+new Date());
   }
 
 

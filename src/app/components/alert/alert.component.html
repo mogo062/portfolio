@@ -1,18 +1,18 @@
 <div class="alert" [ngClass]="{
-  'alert-info': tag === 'I',
-  'alert-warning': tag === 'W',
-  'alert-danger': tag === 'D',
-  'alert-success': tag === 'S'
-}" *ngIf="show">
+  'alert-info': alertService.getTag() === 'I',
+  'alert-warning': alertService.getTag() === 'W',
+  'alert-danger': alertService.getTag() === 'D',
+  'alert-success': alertService.getTag() === 'S'
+}" *ngIf="alertService.isShow()">
     <div class="alert-items">
         <div class="alert-item static">
             <div class="alert-icon-wrapper">
                 <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
             </div>
-            <span class="alert-text">{{message}}</span>
+            <span class="alert-text">{{alertService.getMessage()}}</span>
         </div>
     </div>
-    <button type="button" class="close" aria-label="Close" (click)="close()">
+    <button type="button" class="close" aria-label="Close" (click)="alertService.close()">
         <clr-icon aria-hidden="true" shape="close"></clr-icon>
     </button>
 </div>
