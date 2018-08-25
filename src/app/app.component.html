@@ -9,7 +9,7 @@
     <navbar (onToggleRefresh)="toggleRefresh($event)" ></navbar>
     <nav class="subnav">
         <ul class="nav">
-          <ticker></ticker>
+          <ticker [stocks]="stocks"></ticker>
         </ul>
     </nav>
     <div class="content-container">
