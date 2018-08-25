@@ -17,6 +17,9 @@ import { StocksInterceptor } from './services/interceptor.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { AlertService } from './services/alert.service';
 
+import { CurrencyPipe } from '@angular/common';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +36,10 @@ import { AlertService } from './services/alert.service';
     HttpClientModule
   ],
   providers: [
-    AlertService,
+    AlertService,  // to share service between components
     LocalStorageService,
     AccountService,
+    CurrencyPipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: StocksInterceptor,

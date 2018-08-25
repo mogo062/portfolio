@@ -51,6 +51,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 //      this.stocks = stocks;
       //console.log(stocks.length);
     }, error => {
+      this.alertService.alert(true, 15000, 'D', 'There was an error loading stocks: ${error}');
       console.error(`There was an error loading stocks: ${error}`);
     })
   }
